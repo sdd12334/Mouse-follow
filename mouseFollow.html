@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+    <style>
+        body {
+            height: 600px;
+        }
+        img {
+            position:absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+
+<img id="pic0" src="pic.JPG" alt="img">
+<img id="pic1" src="pic.JPG" alt="img">
+<img id="pic2" src="pic.JPG" alt="img">
+<img id="pic3" src="pic.JPG" alt="img">
+<img id="pic4" src="pic.JPG" alt="img">
+<img id="pic5" src="pic.JPG" alt="img">
+<div id="coordinate">/</div>
+
+<script>
+    $("body").mousemove(function(event){        
+        let mouseX = event.clientX;
+        let mouseY = event.clientY;
+        //$("#coordinate").html("<p>( "+ mouseX + " , " + mouseY + ")</p>");
+        //if there is no 'function', the move() will not delay because move() does not return a function, the first parameter should be a function
+        move(mouseX,mouseY);    
+    });
+
+    function move(x, y){
+        for(let i = 0; i<=6; i++){
+            setTimeout(function(){ $("#pic"+i).css({ "left":x+i*5+"px", "top":y+i*5+"px"});},(i+1)*100);
+        }
+    }
+</script>
+
+</body>
+</html>
