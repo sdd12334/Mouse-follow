@@ -10,7 +10,7 @@
     </script>
     <style>
         body {
-            height: 600px;
+            height: 900px;
         }
         img {
             position:absolute;
@@ -30,16 +30,20 @@
 <div id="coordinate">/</div>
 
 <script>
-    $("body").mousemove(function(event){        
-        let mouseX = event.clientX;
-        let mouseY = event.clientY;
+    $("body").mousemove(function(event){ 
+        //当前屏幕的坐标，忽略页面滚动因素
+        // let mouseX = event.clientX;
+        // let mouseY = event.clientY;
+        //考虑页面滚动
+        let mouseX = event.pageX;
+        let mouseY = event.pageY;
         //$("#coordinate").html("<p>( "+ mouseX + " , " + mouseY + ")</p>");
-        //if there is no 'function', the move() will not delay because move() does not return a function, the first parameter should be a function
         move(mouseX,mouseY);    
     });
 
     function move(x, y){
         for(let i = 0; i<=6; i++){
+            //第一个参数类型是function
             setTimeout(function(){ $("#pic"+i).css({ "left":x+i*5+"px", "top":y+i*5+"px"});},(i+1)*100);
         }
     }
